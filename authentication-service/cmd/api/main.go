@@ -9,9 +9,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/jackc/pgconn"
-	"github.com/jackc/pgx/v4"
-	"github.com/jackc/pgx/v4/stdlib"
+	_ "github.com/jackc/pgconn"
+	_ "github.com/jackc/pgx/v4"
+	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
 const webPort = "80"
@@ -76,7 +76,7 @@ func connectToDB() *sql.DB {
 		}
 
 		if counts > 10 {
-			log.Printls(err)
+			log.Println(err)
 			return nil
 		}
 		log.Println("Backing off two seconds...")
