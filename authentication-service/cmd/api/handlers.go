@@ -20,13 +20,13 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	user, err := app.Models.User.GetByEmail(requestPayload.Email)
-	if err != nill {
+	if err != nil {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
 		return
 	}
 
 	valid, err := user.PasswordMatches(requestPayload.Password)
-	if err != nill || !valid {
+	if err != nil || !valid {
 		app.errorJSON(w, errors.New("invalid credentials"), http.StatusBadRequest)
 		return
 	}
@@ -37,5 +37,5 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 		Data:    user,
 	}
 
-	app.writeJson(w, http.StatusAccepted, payload)
+	app.writeJSON(w, http.StatusAccepted, payload)
 }
