@@ -1,7 +1,6 @@
-version: '3'
+version: "3"
 
 services:
-
   broker-service:
     build:
       context: ./broker-service
@@ -26,9 +25,19 @@ services:
     environment:
       DSN: "host=postgres port=5432 user=postgres password=password dbname=users sslmode=disable timezone=UTC connect_timeout=5"
 
+  logger-service:
+    build:
+      context: ./logger-service
+      dockerfile: ./logger-service.dockerfile
+    restart: always
+    ports:
+      - "8081:80"
+    deploy:
+      mode: replicated
+      replicas: 1
 
   postgres:
-    image: 'postgres:14.0'
+    image: "postgres:14.0"
     ports:
       - "5432:5432"
     restart: always

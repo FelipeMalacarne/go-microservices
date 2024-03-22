@@ -16,7 +16,7 @@ func main() {
 	log.Printf("Starting broker service on port %s\n", webPort)
 
 	server := &http.Server{
-		Addr: fmt.Sprintf(":%s", webPort),
+		Addr:    fmt.Sprintf(":%s", webPort),
 		Handler: app.routes(),
 	}
 
@@ -24,5 +24,4 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-
 }
