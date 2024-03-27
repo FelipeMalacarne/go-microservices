@@ -15,7 +15,7 @@ import (
 const (
 	webPort  = "80"
 	rpcPort  = "5001"
-	mongoURL = "mongodb://localhost:27017"
+	mongoURL = "mongodb://mongo:27017"
 	gRpcPort = "50051"
 )
 
@@ -46,7 +46,7 @@ func main() {
 		Models: data.New(client),
 	}
 
-	go app.serve()
+	app.serve()
 }
 
 func (app *Config) serve() {
@@ -73,6 +73,8 @@ func connectToMongo() (*mongo.Client, error) {
 		log.Println("Error connecting:", err)
 		return nil, err
 	}
+
+	fmt.Println()
 
 	return c, nil
 }

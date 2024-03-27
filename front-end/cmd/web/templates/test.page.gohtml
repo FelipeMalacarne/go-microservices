@@ -15,7 +15,7 @@
                    Test Auth
                 </a>
 
-                <a id="authBrokerBtn" class="btn btn-outline-secondary" href="javascript:void(0);">
+                <a id="logBtn" class="btn btn-outline-secondary" href="javascript:void(0);">
                    Test Log
                 </a>
 
@@ -50,7 +50,7 @@
         let sent = document.getElementById("payload")
         let received = document.getElementById("received")
 
-        logBtn.addEventListener('click', function() {
+        logBtn.addEventListener("click", function() {
             const payload = {
                 action: "log",
                 log: {
