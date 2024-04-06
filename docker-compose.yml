@@ -41,11 +41,17 @@ services:
       context: ./mail-service
       dockerfile: ./mail-service.dockerfile
     restart: always
-    ports:
-      - "8083:80"
     deploy:
       mode: replicated
       replicas: 1
+    environment:
+      MAIL_DOMAIN: localhost
+      MAIL_HOST: mailhog
+      MAIL_PORT: 1025
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
+      FROM_NAME: "Felipe Malacarne"
+      FROM_ADDRESS: "felipe@exemplo.com.br"
 
   postgres:
     image: "postgres:14.0"
