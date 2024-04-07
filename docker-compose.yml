@@ -12,6 +12,15 @@ services:
       mode: replicated
       replicas: 1
 
+  listener-service:
+    build:
+      context: ./listener-service
+      dockerfile: ./listener-service.dockerfile
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+
   authentication-service:
     build:
       context: ./authentication-service
